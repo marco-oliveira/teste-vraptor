@@ -9,6 +9,9 @@
 <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 </head>
 <body>
+	<c:if test="${not empty mensagem}">
+	    <div class="alert alert-success">${mensagem}</div>
+	</c:if>
 	<h1>Listagem de Produtos</h1>
 	
 	<table class="table table-striped table-bordered table-hover">
@@ -36,5 +39,6 @@
 	<a href="<c:url value='/produto/formulario'/>">
 	    Adicionar mais produtos!
 	</a>
+	
 </body>
 </html>

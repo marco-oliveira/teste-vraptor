@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../base.css">
 </head>
-<body>
+<body class="container">
 	  <h1>Adicionar Produto</h1>
 
     <form action="<c:url value='/produto/adiciona'/>" method="post">
