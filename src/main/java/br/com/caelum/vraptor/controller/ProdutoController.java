@@ -2,6 +2,7 @@ package br.com.caelum.vraptor.controller;
 
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
@@ -9,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.dao.ProdutoDao;
 import br.com.caelum.vraptor.model.Produto;
+import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 
 @Controller
@@ -16,15 +18,17 @@ public class ProdutoController {
 	
 	private final Result result;
 	private ProdutoDao dao;
+	private Validator validator;
 	
 	public ProdutoController() {
-		this(null, null);
+		this(null, null, null);
 	}
 	
 	@Inject
-	public ProdutoController(Result result, ProdutoDao produtoDao) {
+	public ProdutoController(Result result, ProdutoDao produtoDao, Validator validator) {
 		this.result = result;
 		this.dao = produtoDao;
+		this.validator = validator;
 	}
 	
 	@Get
@@ -53,7 +57,8 @@ public class ProdutoController {
 	}
 	
 	@Post
-	public void adiciona(Produto produto) {
+	public void adiciona(@Valid Produto produto) {
+		validator.onErrorForwardTo(this).formulario();
 		dao.adiciona(produto);
 		result.include("mensagem", "Produto Cadastrado com sucesso!");
 		result.redirectTo(this).lista();

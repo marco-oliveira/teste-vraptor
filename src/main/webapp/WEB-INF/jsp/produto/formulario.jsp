@@ -13,6 +13,13 @@
 	  <h1>Adicionar Produto</h1>
 
     <form action="<c:url value='/produto/adiciona'/>" method="post">
+    <c:if test="${not empty errors}">
+            <div class="alert alert-danger">
+                <c:forEach var="error" items="${errors}">
+                    ${error.category} - ${error.message}<br />
+                </c:forEach>
+            </div>
+        </c:if>
     Nome:
     <input type="text" name="produto.nome" value="${produto.nome}" class="form-control"/>
     Valor:

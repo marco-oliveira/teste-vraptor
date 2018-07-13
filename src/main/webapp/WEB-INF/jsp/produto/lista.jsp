@@ -12,6 +12,7 @@
 	<c:if test="${not empty mensagem}">
 	    <div class="alert alert-success">${mensagem}</div>
 	</c:if>
+	 
 	<h1>Listagem de Produtos</h1>
 	
 	<table class="table table-striped table-bordered table-hover">
