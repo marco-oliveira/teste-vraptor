@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lista todos</title>
+<title>Lista</title>
 <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 	    <div class="alert alert-success">${mensagem}</div>
 	</c:if>
 	 
-	<h1>Listagem de Produtos</h1>
+	<h1>Listagem de Produtos do ${usuarioLogado.usuario.nome}</h1>
 	
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
